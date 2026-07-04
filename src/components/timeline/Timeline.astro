@@ -1,0 +1,50 @@
+---
+import Container from "../container/Container.astro";
+import "./Timeline.css";
+
+type TimelineItem = {
+  period?: string;
+  title: string;
+  subtitle?: string;
+  description?: string;
+  challenges?: string[];
+};
+
+interface Props {
+  items?: TimelineItem[];
+  ariaLabel?: string;
+  class?: string;
+}
+
+const { items = [], ariaLabel = "Timeline" } = Astro.props;
+const className = ["timeline", Astro.props.class].filter(Boolean).join(" ");
+---
+
+<div class={className} aria-label={ariaLabel}>
+  <slot />
+  {items.map((item, index) => (
+    <article class:list={["timeline__item", { "timeline__item--reverse": index % 2 !== 0 }]}>
+      <Container class="timeline__challenges" variant="minimal">
+        <p class="timeline__label">Retos superados</p>
+        {item.challenges && item.challenges.length > 0 ? (
+          <ul class="timeline__challenge-list">
+            {item.challenges.map((challenge) => <li>{challenge}</li>)}
+          </ul>
+        ) : (
+          <p class="timeline__empty">Adaptación, entrega y mejora continua.</p>
+        )}
+      </Container>
+
+      <div class="timeline__axis" aria-hidden="true">
+        <span class="timeline__dot"></span>
+      </div>
+
+      <Container class="timeline__content">
+        {item.period && <p class="timeline__period">{item.period}</p>}
+        <h3>{item.title}</h3>
+        {item.subtitle && <p class="timeline__subtitle">{item.subtitle}</p>}
+        {item.description && <p class="timeline__description">{item.description}</p>}
+      </Container>
+    </article>
+  ))}
+</div>

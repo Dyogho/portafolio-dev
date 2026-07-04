@@ -2,7 +2,7 @@
   border-radius: 1.5rem;
   color: var(--color-primary);
   min-height: 100%;
-  padding: clamp(1.25rem, 3vw, 2rem);
+  padding: var(--page-margin);
 }
 
 .container--default {

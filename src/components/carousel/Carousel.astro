@@ -1,0 +1,31 @@
+---
+import "./Carousel.css";
+
+type CarouselItem = {
+  title: string;
+  description?: string;
+};
+
+interface Props {
+  items?: CarouselItem[];
+  ariaLabel?: string;
+  class?: string;
+}
+
+const { items = [], ariaLabel = "Carousel" } = Astro.props;
+const className = ["carousel", Astro.props.class].filter(Boolean).join(" ");
+---
+
+<section class={className} aria-label={ariaLabel}>
+  <div class="carousel__viewport">
+    <div class="carousel__track">
+      <slot />
+      {items.map((item) => (
+        <article class="carousel__item">
+          <h3>{item.title}</h3>
+          {item.description && <p>{item.description}</p>}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
