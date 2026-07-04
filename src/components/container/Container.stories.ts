@@ -6,6 +6,14 @@ export default {
   component: Container,
 };
 
-export const Basic = {
-  args: {},
+export const Default = {
+  args: {
+    variant: "default",
+  },
+};
+
+export const Minimal = {
+  args: {
+    variant: "minimal",
+  },
 };

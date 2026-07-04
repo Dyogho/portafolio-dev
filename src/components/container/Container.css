@@ -1,14 +1,22 @@
 .container {
-  background: var(--color-surface);
-  border: 1px solid var(--color-line);
   border-radius: 1.5rem;
   color: var(--color-primary);
   min-height: 100%;
   padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.container--default {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   transition: border-color 180ms ease, transform 180ms ease;
 }
 
-.container:hover {
+.container--default:hover {
   border-color: color-mix(in srgb, var(--color-primary) 35%, transparent);
   transform: translateY(-4px);
+}
+
+.container--minimal {
+  background: transparent;
+  border: 0;
 }

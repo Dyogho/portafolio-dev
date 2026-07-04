@@ -1,0 +1,20 @@
+---
+import Container from "../container/Container.astro";
+import Icon from "../icon/Icon.astro";
+import "./StackCard.css";
+
+type Props = {
+  title: string;
+  /** Local SVG path from public/icons. Example: /icons/react.svg */
+  icon: string;
+  class?: string;
+};
+
+const { title, icon } = Astro.props;
+const className = ["stack-card", Astro.props.class].filter(Boolean).join(" ");
+---
+
+<Container class={className} variant="minimal">
+  <Icon class="stack-card__icon" local={icon} label={title} size={36} />
+  <h3 class="stack-card__title">{title}</h3>
+</Container>

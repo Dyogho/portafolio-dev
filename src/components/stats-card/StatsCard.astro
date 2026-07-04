@@ -1,0 +1,18 @@
+---
+import Container from "../container/Container.astro";
+import "./StatsCard.css";
+
+type Props = {
+  title: string;
+  description: string;
+  class?: string;
+};
+
+const { title, description } = Astro.props;
+const className = ["stats-card", Astro.props.class].filter(Boolean).join(" ");
+---
+
+<Container class={className} variant="minimal">
+  <p class="stats-card__title">{title}</p>
+  <p class="stats-card__description">{description}</p>
+</Container>

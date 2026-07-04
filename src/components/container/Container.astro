@@ -1,11 +1,15 @@
 ---
 import "./Container.css";
 
-type Props = {
+interface Props {
   class?: string;
-};
+  variant?: "default" | "minimal";
+}
 
-const className = ["container", Astro.props.class].filter(Boolean).join(" ");
+const { variant = "default" } = Astro.props;
+const className = ["container", `container--${variant}`, Astro.props.class]
+  .filter(Boolean)
+  .join(" ");
 ---
 
 <article class={className}>
