@@ -1,23 +1,87 @@
 @font-face {
-  font-family: "Aeonik TRIAL";
-  src: url("/fonts/aeonik-trial/AeonikTRIAL-Regular.woff2") format("woff2");
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Light.otf") format("opentype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-LightItalic.otf") format("opentype");
+  font-display: swap;
+  font-style: italic;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Regular.otf") format("opentype");
   font-display: swap;
   font-style: normal;
   font-weight: 400;
 }
 
 @font-face {
-  font-family: "Aeonik TRIAL";
-  src: url("/fonts/aeonik-trial/AeonikTRIAL-Bold.woff2") format("woff2");
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Italic.otf") format("opentype");
+  font-display: swap;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Medium.otf") format("opentype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-MediumItalic.otf") format("opentype");
+  font-display: swap;
+  font-style: italic;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Bold.otf") format("opentype");
   font-display: swap;
   font-style: normal;
   font-weight: 700;
 }
 
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-BoldItalic.otf") format("opentype");
+  font-display: swap;
+  font-style: italic;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Black.otf") format("opentype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-BlackItalic.otf") format("opentype");
+  font-display: swap;
+  font-style: italic;
+  font-weight: 900;
+}
+
 :root {
   color-scheme: light;
 
-  --font-primary: "Aeonik TRIAL", Arial, sans-serif;
+  --font-primary: "Satoshi", Arial, sans-serif;
   --size-font-base: 1rem;
 
   --color-primary: #222222;
