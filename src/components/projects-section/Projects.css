@@ -12,6 +12,64 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.project-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.project-card__meta {
+  color: var(--color-secondary);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.project-card h3 {
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.project-card p {
+  color: var(--color-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-card__tag {
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  color: var(--color-secondary);
+  font-size: 0.85rem;
+  padding: 0.35rem 0.65rem;
+}
+
+.project-card__link {
+  align-items: center;
+  display: inline-flex;
+  font-weight: 700;
+  gap: 0.4rem;
+  justify-self: start;
+  margin-top: auto;
+  text-decoration: none;
+}
+
+.project-card__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
 @media (max-width: 900px) {
   .projects__header {
     align-items: start;

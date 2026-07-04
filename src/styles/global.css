@@ -85,6 +85,7 @@
   --size-font-base: 1rem;
 
   --color-primary: #222222;
+  --color-on-primary: #ffffff;
   --color-secondary: #6f6f6f;
   --color-tertiary: #f8f8f8;
   --color-surface: #ffffff;
@@ -123,6 +124,7 @@
     color-scheme: dark;
 
     --color-primary: #ffffff;
+    --color-on-primary: #151515;
     --color-secondary: #bdbdbd;
     --color-tertiary: #151515;
     --color-surface: #202020;
@@ -134,6 +136,7 @@
   color-scheme: dark;
 
   --color-primary: #ffffff;
+  --color-on-primary: #151515;
   --color-secondary: #bdbdbd;
   --color-tertiary: #151515;
   --color-surface: #202020;

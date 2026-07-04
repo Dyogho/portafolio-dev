@@ -1,0 +1,13 @@
+---
+import "./Container.css";
+
+type Props = {
+  class?: string;
+};
+
+const className = ["container", Astro.props.class].filter(Boolean).join(" ");
+---
+
+<article class={className}>
+  <slot />
+</article>

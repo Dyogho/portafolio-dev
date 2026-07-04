@@ -1,9 +1,9 @@
 .button {
   align-items: center;
-  background: var(--button-bg);
-  border: 1px solid var(--button-border);
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
   border-radius: 999px;
-  color: var(--button-color);
+  color: var(--color-on-primary);
   cursor: pointer;
   display: inline-flex;
   font: inherit;
@@ -18,51 +18,13 @@
 }
 
 .button:hover {
-  background: var(--button-hover-bg);
-  border-color: var(--button-hover-border);
-  color: var(--button-hover-color);
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
   transform: translateY(-2px);
 }
 
 .button:focus-visible {
   outline: 2px solid var(--color-secondary);
   outline-offset: 3px;
-}
-
-.button--default {
-  --button-bg: var(--color-primary);
-  --button-border: var(--color-primary);
-  --button-color: var(--color-white);
-  --button-hover-bg: transparent;
-  --button-hover-border: var(--color-primary);
-  --button-hover-color: var(--color-primary);
-}
-
-.button--dark {
-  --button-bg: transparent;
-  --button-border: var(--color-primary);
-  --button-color: var(--color-primary);
-  --button-hover-bg: var(--color-primary);
-  --button-hover-border: var(--color-primary);
-  --button-hover-color: var(--color-white);
-}
-
-@media (prefers-color-scheme: dark) {
-  .button--default {
-    --button-color: var(--color-tertiary);
-    --button-hover-color: var(--color-primary);
-  }
-
-  .button--dark {
-    --button-hover-color: var(--color-tertiary);
-  }
-}
-
-[data-theme="dark"] .button--default {
-  --button-color: var(--color-tertiary);
-  --button-hover-color: var(--color-primary);
-}
-
-[data-theme="dark"] .button--dark {
-  --button-hover-color: var(--color-tertiary);
 }

@@ -9,14 +9,12 @@ export default {
 export const Default = {
   args: {
     label: "View projects",
-    variant: "default",
   },
 };
 
-export const Dark = {
+export const Link = {
   args: {
     label: "Contact me",
-    variant: "dark",
     href: "#contact",
   },
 };

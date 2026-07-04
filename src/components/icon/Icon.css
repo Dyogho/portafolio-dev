@@ -1,8 +1,22 @@
 .icon {
+  align-items: center;
   display: inline-flex;
+  height: var(--icon-size, 1.5rem);
+  justify-content: center;
   line-height: 0;
+  width: var(--icon-size, 1.5rem);
 }
 
-.icon svg {
+.icon__image,
+.icon__svg,
+.icon__svg > svg,
+.icon > svg {
+  display: block;
   flex: 0 0 auto;
+  height: 100%;
+  width: 100%;
+}
+
+.icon__image {
+  object-fit: contain;
 }

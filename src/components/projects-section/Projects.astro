@@ -1,6 +1,7 @@
 ---
 import Button from "../button/Button.astro";
-import Card from "../card/Card.astro";
+import Container from "../container/Container.astro";
+import Icon from "../icon/Icon.astro";
 import SectionHeading from "../section-heading/SectionHeading.astro";
 import "./Projects.css";
 
@@ -36,10 +37,22 @@ const projects = [
       title="Projects"
       description="Una selección de trabajos donde combino interfaz, código y criterio de producto."
     />
-    <Button href="https://github.com" label="GitHub" variant="dark" />
+    <Button href="https://github.com" label="GitHub" />
   </div>
 
   <div class="projects__grid">
-    {projects.map((project) => <Card {...project} />)}
+    {projects.map((project) => (
+      <Container class="project-card">
+        <p class="project-card__meta">{project.meta}</p>
+        <h3>{project.title}</h3>
+        <p>{project.description}</p>
+        <ul class="project-card__tags" aria-label="Tecnologías">
+          {project.tags.map((tag) => <li class="project-card__tag">{tag}</li>)}
+        </ul>
+        <a class="project-card__link" href={project.href}>
+          View project <Icon name="arrow" size={18} />
+        </a>
+      </Container>
+    ))}
   </div>
 </section>

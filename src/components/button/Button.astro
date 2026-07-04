@@ -4,11 +4,11 @@ import "./Button.css";
 type Props = {
   href?: string;
   label?: string;
-  variant?: "default" | "dark";
+  class?: string;
 };
 
-const { href, label = "Button", variant = "default" } = Astro.props;
-const className = `button button--${variant}`;
+const { href, label = "Button" } = Astro.props;
+const className = ["button", Astro.props.class].filter(Boolean).join(" ");
 ---
 
 {href ? <a class={className} href={href}>{label}</a> : <button class={className}>{label}</button>}
