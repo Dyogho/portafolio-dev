@@ -1,0 +1,30 @@
+---
+import Icon from "../icon/Icon.astro";
+import "./Card.css";
+
+type Props = {
+  title: string;
+  description?: string;
+  href?: string;
+  meta?: string;
+  tags?: string[];
+};
+
+const { title, description, href, meta, tags = [] } = Astro.props;
+---
+
+<article class="card">
+  {meta && <p class="card__meta">{meta}</p>}
+  <h3>{title}</h3>
+  {description && <p>{description}</p>}
+  {tags.length > 0 && (
+    <ul class="card__tags" aria-label="Tecnologías">
+      {tags.map((tag) => <li class="card__tag">{tag}</li>)}
+    </ul>
+  )}
+  {href && (
+    <a class="card__link" href={href}>
+      View project <Icon name="arrow" size={18} />
+    </a>
+  )}
+</article>

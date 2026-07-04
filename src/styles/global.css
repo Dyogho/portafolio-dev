@@ -1,0 +1,128 @@
+@font-face {
+  font-family: "Aeonik TRIAL";
+  src: url("/fonts/aeonik-trial/AeonikTRIAL-Regular.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Aeonik TRIAL";
+  src: url("/fonts/aeonik-trial/AeonikTRIAL-Bold.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+
+:root {
+  color-scheme: light;
+
+  --font-primary: "Aeonik TRIAL", Arial, sans-serif;
+  --size-font-base: 1rem;
+
+  --color-primary: #222222;
+  --color-secondary: #6f6f6f;
+  --color-tertiary: #f8f8f8;
+  --color-surface: #ffffff;
+  --color-line: rgba(34, 34, 34, 0.12);
+  --color-accent: #d7ff65;
+  --color-white: #ffffff;
+
+  /* Spacing */
+  --page-margin: 1rem;
+  --page-gutter: 1rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-margin: 1.75rem;
+    --page-gutter: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-margin: 2.5rem;
+    --page-gutter: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --page-margin: 4.5rem;
+    --page-gutter: 3rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --color-primary: #ffffff;
+    --color-secondary: #bdbdbd;
+    --color-tertiary: #151515;
+    --color-surface: #202020;
+    --color-line: rgba(255, 255, 255, 0.14);
+  }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-primary: #ffffff;
+  --color-secondary: #bdbdbd;
+  --color-tertiary: #151515;
+  --color-surface: #202020;
+  --color-line: rgba(255, 255, 255, 0.14);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  background: var(--color-tertiary);
+  color: var(--color-primary);
+  font-family: var(--font-primary);
+  font-size: var(--size-font-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+}
+
+main {
+  overflow: hidden;
+}
+
+.section {
+  border-top: 1px solid var(--color-line);
+  padding: clamp(4rem, 10vw, 8rem) var(--page-margin);
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

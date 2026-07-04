@@ -1,0 +1,28 @@
+---
+import SectionHeading from "../section-heading/SectionHeading.astro";
+import "./AboutMe.css";
+
+const skills = ["Astro", "React", "TypeScript", "CSS", "Accessibility", "Performance", "SEO"];
+---
+
+<section id="about" class="section about" aria-labelledby="about-title">
+  <SectionHeading
+    eyebrow="About"
+    title="About me"
+    description="Me interesa crear productos web que se sientan simples, rápidos y bien pensados."
+  />
+
+  <div class="about__content">
+    <p>
+      Soy desarrollador frontend con foco en experiencias digitales claras: diseño interfaces,
+      traduzco sistemas visuales a código y optimizo cada detalle para que el sitio cargue rápido.
+    </p>
+    <p>
+      Trabajo bien en la intersección entre diseño y desarrollo, cuidando accesibilidad,
+      responsive design y mantenimiento del código.
+    </p>
+    <ul class="about__skills" aria-label="Habilidades">
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+  </div>
+</section>

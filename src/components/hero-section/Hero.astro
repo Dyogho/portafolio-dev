@@ -1,0 +1,34 @@
+---
+import Button from "../button/Button.astro";
+import "./Hero.css";
+---
+
+<section id="hero" class="section hero" aria-labelledby="hero-title">
+  <div class="hero__content">
+    <p class="hero__eyebrow">Frontend Developer</p>
+    <h1 id="hero-title">Construyendo experiencias web limpias y rápidas.</h1>
+    <p class="hero__summary">
+      Desarrollo interfaces modernas con Astro, React y TypeScript, cuidando rendimiento,
+      accesibilidad y detalles visuales.
+    </p>
+    <div class="hero__actions">
+      <Button href="#projects" label="Ver proyectos" />
+      <Button href="mailto:hola@example.com" label="Contactar" variant="dark" />
+    </div>
+  </div>
+
+  <div class="hero__meta" aria-label="Resumen profesional">
+    <div class="hero__meta-item">
+      <span class="hero__meta-label">Ubicación</span>
+      <span class="hero__meta-value">Disponible remoto</span>
+    </div>
+    <div class="hero__meta-item">
+      <span class="hero__meta-label">Stack</span>
+      <span class="hero__meta-value">Astro · React · TS</span>
+    </div>
+    <div class="hero__meta-item">
+      <span class="hero__meta-label">Enfoque</span>
+      <span class="hero__meta-value">Performance & UX</span>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+.site-header {
+  align-items: center;
+  backdrop-filter: blur(18px);
+  background: color-mix(in srgb, var(--color-tertiary) 82%, transparent);
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  padding: 1rem var(--page-margin);
+  position: sticky;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.site-header__brand {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+}
+
+.site-header__nav {
+  align-items: center;
+  display: flex;
+  gap: clamp(0.75rem, 3vw, 1.75rem);
+}
+
+.site-header__nav a {
+  color: var(--color-secondary);
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.site-header__nav a:hover,
+.site-header__nav a:focus-visible {
+  color: var(--color-primary);
+}
+
+@media (max-width: 560px) {
+  .site-header {
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .site-header__nav {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}

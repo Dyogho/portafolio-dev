@@ -1,0 +1,46 @@
+---
+import SectionHeading from "../section-heading/SectionHeading.astro";
+import "./Experience.css";
+
+const experiences = [
+  {
+    period: "2024 — Actual",
+    role: "Frontend Developer",
+    company: "Freelance",
+    description: "Construcción de sitios rápidos, landing pages y componentes reutilizables para productos digitales.",
+  },
+  {
+    period: "2022 — 2024",
+    role: "UI Developer",
+    company: "Digital Studio",
+    description: "Implementación de interfaces responsive, integración con APIs y colaboración con diseño/producto.",
+  },
+  {
+    period: "2020 — 2022",
+    role: "Web Developer",
+    company: "Early projects",
+    description: "Desarrollo de sitios estáticos, optimización básica de SEO y mantenimiento frontend.",
+  },
+];
+---
+
+<section id="experience" class="section experience" aria-labelledby="experience-title">
+  <SectionHeading
+    eyebrow="Timeline"
+    title="Experience"
+    description="Roles recientes y áreas donde he aportado desde la interfaz hasta la entrega final."
+  />
+
+  <div class="experience__list">
+    {experiences.map((item) => (
+      <article class="experience__item">
+        <p class="experience__period">{item.period}</p>
+        <div>
+          <h3 class="experience__role">{item.role}</h3>
+          <p class="experience__company">{item.company}</p>
+        </div>
+        <p class="experience__description">{item.description}</p>
+      </article>
+    ))}
+  </div>
+</section>

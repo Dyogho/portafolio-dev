@@ -1,0 +1,25 @@
+.section-heading {
+  max-width: 48rem;
+}
+
+.section-heading__eyebrow {
+  color: var(--color-secondary);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+.section-heading h2 {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+  margin: 0;
+}
+
+.section-heading__description {
+  color: var(--color-secondary);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.6;
+  margin: 1rem 0 0;
+}

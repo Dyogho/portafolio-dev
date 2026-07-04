@@ -1,0 +1,45 @@
+---
+import Button from "../button/Button.astro";
+import Card from "../card/Card.astro";
+import SectionHeading from "../section-heading/SectionHeading.astro";
+import "./Projects.css";
+
+const projects = [
+  {
+    title: "SaaS Landing Page",
+    description: "Página comercial enfocada en conversión, velocidad de carga y una narrativa clara del producto.",
+    href: "#",
+    meta: "Web design",
+    tags: ["Astro", "CSS", "SEO"],
+  },
+  {
+    title: "Design System",
+    description: "Biblioteca de componentes reutilizables con documentación visual y criterios de accesibilidad.",
+    href: "#",
+    meta: "UI engineering",
+    tags: ["Storybook", "Tokens", "A11y"],
+  },
+  {
+    title: "Portfolio v1",
+    description: "Experiencia personal minimalista, responsive y optimizada para presentar proyectos técnicos.",
+    href: "#",
+    meta: "Personal brand",
+    tags: ["Astro", "TypeScript", "CSS"],
+  },
+];
+---
+
+<section id="projects" class="section projects" aria-labelledby="projects-title">
+  <div class="projects__header">
+    <SectionHeading
+      eyebrow="Selected work"
+      title="Projects"
+      description="Una selección de trabajos donde combino interfaz, código y criterio de producto."
+    />
+    <Button href="https://github.com" label="GitHub" variant="dark" />
+  </div>
+
+  <div class="projects__grid">
+    {projects.map((project) => <Card {...project} />)}
+  </div>
+</section>
