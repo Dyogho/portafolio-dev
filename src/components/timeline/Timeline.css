@@ -3,16 +3,16 @@
 }
 
 .timeline__item {
+  align-items: stretch;
   display: grid;
   gap: clamp(1rem, 3vw, 2rem);
   grid-template-areas: "challenges axis content";
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   position: relative;
 }
 
 .timeline__item--reverse {
   grid-template-areas: "content axis challenges";
-  grid-template-columns: minmax(0, 1.2fr) auto minmax(0, 1fr);
 }
 
 .timeline__item + .timeline__item {
@@ -50,7 +50,7 @@
 
 .timeline__challenges,
 .timeline__content {
-  align-self: start;
+  min-height: 100%;
 }
 
 .timeline__challenges {
