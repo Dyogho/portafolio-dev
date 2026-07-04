@@ -1,0 +1,15 @@
+---
+import "./TitleSection.css";
+
+interface Props {
+  title: string;
+  class?: string;
+}
+
+const { title } = Astro.props;
+const className = ["title-section", Astro.props.class].filter(Boolean).join(" ");
+---
+
+<header class={className}>
+  <h2 class="title-section__title">{title}</h2>
+</header>

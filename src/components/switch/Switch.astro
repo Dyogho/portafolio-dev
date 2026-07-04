@@ -1,0 +1,40 @@
+---
+import "./Switch.css";
+
+type SwitchOption = {
+  label: string;
+  value: string;
+};
+
+interface Props {
+  name: string;
+  options: [SwitchOption, SwitchOption] | SwitchOption[];
+  value?: string;
+  label?: string;
+  class?: string;
+}
+
+const { name, options, label = "Cambiar opción" } = Astro.props;
+const value = Astro.props.value ?? options[0]?.value;
+const className = ["switch", Astro.props.class].filter(Boolean).join(" ");
+---
+
+<fieldset class={className} aria-label={label}>
+  <legend class="visually-hidden">{label}</legend>
+  {options.map((option) => {
+    const id = `${name}-${option.value}`;
+    return (
+      <label class="switch__option" for={id}>
+        <input
+          id={id}
+          class="switch__input"
+          type="radio"
+          name={name}
+          value={option.value}
+          checked={option.value === value}
+        />
+        <span class="switch__label">{option.label}</span>
+      </label>
+    );
+  })}
+</fieldset>
