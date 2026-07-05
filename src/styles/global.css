@@ -83,6 +83,23 @@
 
   --font-primary: "Satoshi", Arial, sans-serif;
   --size-font-base: 1rem;
+  --size-font-xs: 0.8rem;
+  --size-font-sm: 0.85rem;
+  --size-font-md: 0.9rem;
+  --size-font-lg: 1.2rem;
+  --size-font-xl: 3rem;
+  --size-font-display: clamp(6rem, 12vw, 11rem);
+
+  --font-weight-light: 300;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 0.85;
+  --line-height-none: 1;
+  --line-height-body: 1.6;
+
+  --letter-spacing-tight: -0.03em;
+  --letter-spacing-tighter: -0.06em;
+  --letter-spacing-wide: 0.08em;
 
   --color-primary: #222222;
   --color-on-primary: #ffffff;
@@ -93,9 +110,26 @@
   --color-accent: #d7ff65;
   --color-white: #ffffff;
 
-  /* Spacing */
+  /* Layout */
   --page-margin: 1rem;
   --page-gutter: 1rem;
+  --container-max-width: 87.5rem;
+  --viewport-full-height: 100svh;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+  --space-12: 5rem;
+  --space-14: 6rem;
+
+  /* Effects */
+  --filter-grayscale: grayscale(100%);
 }
 
 @media (min-width: 768px) {
@@ -129,6 +163,7 @@
     --color-tertiary: #151515;
     --color-surface: #202020;
     --color-line: rgba(255, 255, 255, 0.14);
+
   }
 }
 

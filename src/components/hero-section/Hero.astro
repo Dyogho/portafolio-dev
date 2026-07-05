@@ -1,34 +1,43 @@
 ---
-import Button from "../button/Button.astro";
 import "./Hero.css";
+
+const sidebars = [
+  { className: "hero__sidebar--left", label: "Frontend Developer" },
+  { className: "hero__sidebar--right", label: "2026" },
+];
+
+const metrics = [
+  { value: "+200", label: "Project completed" },
+  { value: "+50", label: "Startup raised" },
+];
 ---
 
-<section id="hero" class="section hero" aria-labelledby="hero-title">
-  <div class="hero__content">
-    <p class="hero__eyebrow">Frontend Developer</p>
-    <h1 id="hero-title">Construyendo experiencias web limpias y rápidas.</h1>
-    <p class="hero__summary">
-      Desarrollo interfaces modernas con Astro, React y TypeScript, cuidando rendimiento,
-      accesibilidad y detalles visuales.
-    </p>
-    <div class="hero__actions">
-      <Button href="#projects" label="Ver proyectos" />
-      <Button href="mailto:hola@example.com" label="Contactar" />
-    </div>
-  </div>
+<section id="hero" class="hero" aria-labelledby="hero-title">
+  {sidebars.map(({ className, label }) => (
+    <p class:list={["hero__sidebar", className]} aria-hidden="true">{label}</p>
+  ))}
 
-  <div class="hero__meta" aria-label="Resumen profesional">
-    <div class="hero__meta-item">
-      <span class="hero__meta-label">Ubicación</span>
-      <span class="hero__meta-value">Disponible remoto</span>
+  <div class="hero__wrapper">
+    <div class="hero__content">
+      <dl class="hero__metrics" aria-label="Portfolio metrics">
+        {metrics.map(({ value, label }) => (
+          <div class="hero__metric">
+            <dt class="hero__number">{value}</dt>
+            <dd class="hero__label">{label}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <div class="hero__body">
+        <h1 id="hero-title" class="hero__title">Hello</h1>
+        <p class="hero__subtitle">— It's Dego a code wizard</p>
+      </div>
+
+      <a class="hero__scroll" href="#projects">Scroll down ↓</a>
     </div>
-    <div class="hero__meta-item">
-      <span class="hero__meta-label">Stack</span>
-      <span class="hero__meta-value">Astro · React · TS</span>
-    </div>
-    <div class="hero__meta-item">
-      <span class="hero__meta-label">Enfoque</span>
-      <span class="hero__meta-value">Performance & UX</span>
-    </div>
+
+    <figure class="hero__media" aria-label="Portrait of Dego">
+      <img class="hero__image" src="/assets/foto.png" alt="Dego" />
+    </figure>
   </div>
 </section>
