@@ -1,10 +1,7 @@
 ---
 import "./Hero.css";
 
-const sidebars = [
-  { className: "hero__sidebar--left", label: "Frontend Developer" },
-  { className: "hero__sidebar--right", label: "2026" },
-];
+const sidebarItems = ["Frontend Developer", "2026"];
 
 const metrics = [
   { value: "+200", label: "Project completed" },
@@ -13,11 +10,13 @@ const metrics = [
 ---
 
 <section id="hero" class="hero" aria-labelledby="hero-title">
-  {sidebars.map(({ className, label }) => (
-    <p class:list={["hero__sidebar", className]} aria-hidden="true">{label}</p>
-  ))}
-
   <div class="hero__wrapper">
+    <aside class="hero__sidebar" aria-hidden="true">
+      <span>{sidebarItems[0]}</span>
+      <span class="hero__sidebar-line"></span>
+      <span>{sidebarItems[1]}</span>
+    </aside>
+
     <div class="hero__content">
       <dl class="hero__metrics" aria-label="Portfolio metrics">
         {metrics.map(({ value, label }) => (
@@ -37,7 +36,7 @@ const metrics = [
     </div>
 
     <figure class="hero__media" aria-label="Portrait of Dego">
-      <img class="hero__image" src="/assets/foto.png" alt="Dego" />
+      <img class="hero__image" src="/image.jpeg" alt="Dego" />
     </figure>
   </div>
 </section>
