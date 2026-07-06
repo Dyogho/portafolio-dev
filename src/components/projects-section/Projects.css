@@ -1,3 +1,16 @@
+.projects.page-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(var(--page-margin), 1fr)
+    minmax(0, var(--container-max-width))
+    minmax(var(--page-margin), 1fr);
+  padding-inline: 0;
+}
+
+.projects.page-grid > * {
+  grid-column: 2;
+}
+
 .projects__header {
   align-items: end;
   display: flex;

@@ -20,7 +20,7 @@
   justify-content: space-between;
   letter-spacing: var(--letter-spacing-wide);
   line-height: var(--line-height-none);
-  padding-block: var(--space-12);
+  padding-block: var(--space-18);
   text-transform: uppercase;
   white-space: nowrap;
 }
