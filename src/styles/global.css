@@ -115,6 +115,7 @@
   --page-gutter: 1rem;
   --container-max-width: 87.5rem;
   --viewport-full-height: 100svh;
+  --header-height: calc(var(--space-8) + var(--space-4) + var(--space-4));
 
   /* Spacing */
   --space-1: 0.25rem;
