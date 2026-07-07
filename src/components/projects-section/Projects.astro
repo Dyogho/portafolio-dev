@@ -1,58 +1,115 @@
 ---
-import Button from "../button/Button.astro";
+import { Image } from "astro:assets";
+import projectCover from "../../assets/project-cover.jpeg";
 import Container from "../container/Container.astro";
 import Icon from "../icon/Icon.astro";
-import SectionHeading from "../section-heading/SectionHeading.astro";
+import TitleSection from "../title-section/TitleSection.astro";
 import "./Projects.css";
+
+const socialLinks = [
+  { label: "Linkedln", href: "#", local: "/icons/linkedln.svg"},
+  { label: "YouTube", href: "#", local: "/icons/youtube.svg" },
+  { label: "GitHub", href: "#", local: "/icons/github.svg" },
+];
 
 const projects = [
   {
     title: "SaaS Landing Page",
-    description: "Página comercial enfocada en conversión, velocidad de carga y una narrativa clara del producto.",
+    description:
+      "Página comercial enfocada en conversión, velocidad de carga y una narrativa clara del producto.",
     href: "#",
+    links: [
+      { label: "YouTube", href: "#", local: "/icons/youtube.svg" },
+      { label: "GitHub", href: "#", local: "/icons/github.svg" },
+    ],
     meta: "Web design",
     tags: ["Astro", "CSS", "SEO"],
+    image: projectCover,
+    imageAlt: "Preview de SaaS Landing Page",
   },
   {
     title: "Design System",
-    description: "Biblioteca de componentes reutilizables con documentación visual y criterios de accesibilidad.",
+    description:
+      "Biblioteca de componentes reutilizables con documentación visual y criterios de accesibilidad.",
     href: "#",
+    links: [
+      { label: "YouTube", href: "#", local: "/icons/youtube.svg" },
+      { label: "GitHub", href: "#", local: "/icons/github.svg" },
+    ],
     meta: "UI engineering",
     tags: ["Storybook", "Tokens", "A11y"],
+    image: projectCover,
+    imageAlt: "Preview de Design System",
   },
   {
     title: "Portfolio v1",
-    description: "Experiencia personal minimalista, responsive y optimizada para presentar proyectos técnicos.",
+    description:
+      "Experiencia personal minimalista, responsive y optimizada para presentar proyectos técnicos.",
     href: "#",
+    links: [
+      { label: "YouTube", href: "#", local: "/icons/youtube.svg" },
+      { label: "GitHub", href: "#", local: "/icons/github.svg" },
+    ],
     meta: "Personal brand",
     tags: ["Astro", "TypeScript", "CSS"],
+    image: projectCover,
+    imageAlt: "Preview de Portfolio v1",
   },
 ];
 ---
 
 <section id="projects" class="section page-grid projects" aria-labelledby="projects-title">
-  <div class="projects__header">
-    <SectionHeading
-      eyebrow="Selected work"
-      title="Projects"
-      description="Una selección de trabajos donde combino interfaz, código y criterio de producto."
-    />
-    <Button href="https://github.com" label="GitHub" />
+  <div class="projects__intro">
+    <TitleSection title="Projects" />
+    <div class="projects__social-links" aria-label="Social links">
+      {socialLinks.map((link) => (
+        <a href={link.href}>
+          <Icon name={link.icon} local={link.local} size={18} />
+          {link.label}
+        </a>
+      ))}
+    </div>
   </div>
 
-  <div class="projects__grid">
-    {projects.map((project) => (
-      <Container class="project-card">
-        <p class="project-card__meta">{project.meta}</p>
-        <h3>{project.title}</h3>
-        <p>{project.description}</p>
-        <ul class="project-card__tags" aria-label="Tecnologías">
-          {project.tags.map((tag) => <li class="project-card__tag">{tag}</li>)}
-        </ul>
-        <a class="project-card__link" href={project.href}>
-          View project <Icon name="arrow" size={18} />
-        </a>
-      </Container>
+  <ol class="projects__list" aria-label="Selected projects">
+    {projects.map((project, index) => (
+      <li class:list={["project-showcase", index % 2 !== 0 && "project-showcase--reverse"]}>
+        <Container class="project-showcase__card" variant="default">
+          <div class="project-showcase__media">
+            <Image
+              class="project-showcase__image"
+              src={project.image}
+              alt={project.imageAlt}
+              widths={[480, 720, 960]}
+              sizes="(max-width: 900px) 100vw, 50vw"
+              loading={index === 0 ? "eager" : "lazy"}
+            />
+          </div>
+
+          <div class="project-showcase__card-body">
+            <p class="project-showcase__meta">{project.meta}</p>
+            <h3>{project.title}</h3>
+
+            <ul class="project-showcase__tags" aria-label="Tecnologías">
+              {project.tags.map((tag) => <li>{tag}</li>)}
+            </ul>
+          </div>
+        </Container>
+
+        <Container class="project-showcase__details" variant="minimal">
+          <span class="project-showcase__index">{String(index + 1).padStart(2, "0")}</span>
+          <p class="project-showcase__summary">{project.description}</p>
+
+          <div class="project-showcase__links" aria-label={`Links for ${project.title}`}>
+            {project.links.map((link) => (
+              <a href={link.href}>
+                <Icon name={link.icon} local={link.local} size={18} />
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </Container>
+      </li>
     ))}
-  </div>
+  </ol>
 </section>
