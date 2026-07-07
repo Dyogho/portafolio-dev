@@ -1,39 +1,73 @@
 .about {
   display: grid;
-  gap: clamp(2rem, 6vw, 5rem);
-  grid-template-columns: 0.9fr 1.1fr;
+  gap: var(--space-10);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.about__intro {
+  grid-column: 1 / 5;
 }
 
 .about__content {
   display: grid;
-  gap: 1.25rem;
+  gap: var(--space-8);
+  grid-column: 5 / -1;
 }
 
-.about__content p {
+.about__copy {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 48rem;
+}
+
+.about__copy p {
   color: var(--color-secondary);
-  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
-  line-height: 1.55;
+  font-size: var(--size-font-lg);
+  line-height: var(--line-height-body);
   margin: 0;
 }
 
-.about__skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  list-style: none;
-  margin: 1rem 0 0;
-  padding: 0;
+.about__stack {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.about__skills li {
+.about__stack-card {
   background: var(--color-surface);
   border: 1px solid var(--color-line);
   border-radius: 999px;
-  padding: 0.55rem 0.85rem;
+  min-height: auto;
+  padding: var(--space-3) var(--space-4);
+}
+
+.about__stack-card .stack-card__icon {
+  height: var(--space-5);
+  width: var(--space-5);
+}
+
+.about__stack-card .stack-card__title {
+  color: var(--color-primary);
+  font-size: var(--size-font-base);
 }
 
 @media (max-width: 900px) {
   .about {
+    grid-template-columns: 1fr;
+  }
+
+  .about__intro,
+  .about__content {
+    grid-column: 1;
+  }
+
+  .about__stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .about__stack {
     grid-template-columns: 1fr;
   }
 }

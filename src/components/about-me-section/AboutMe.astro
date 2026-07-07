@@ -1,28 +1,45 @@
 ---
-import SectionHeading from "../section-heading/SectionHeading.astro";
+import StackCard from "../stack-card/StackCard.astro";
+import TitleSection from "../title-section/TitleSection.astro";
 import "./AboutMe.css";
 
-const skills = ["Astro", "React", "TypeScript", "CSS", "Accessibility", "Performance", "SEO"];
+const stack = [
+  { title: "TypeScript", icon: "/icons/typescript.svg" },
+  { title: "React", icon: "/icons/react.svg" },
+  { title: "Next.js", icon: "/icons/nextjs.svg" },
+  { title: "Angular", icon: "/icons/angular.svg" },
+  { title: "Astro", icon: "/icons/astro.svg" },
+  { title: "Spring Boot", icon: "/icons/springboot.svg" },
+  { title: "Docker", icon: "/icons/docker.svg" },
+  { title: "Git", icon: "/icons/git.svg" },
+  { title: "SEO", icon: "/icons/seo.svg" },
+  { title: "Accessibility", icon: "/icons/accessibility.svg" },
+  { title: "Performance", icon: "/icons/performance.svg" },
+  { title: "Scrum", icon: "/icons/scrum.svg" },
+];
 ---
 
 <section id="about" class="section about" aria-labelledby="about-title">
-  <SectionHeading
-    eyebrow="About"
-    title="About me"
-    description="Me interesa crear productos web que se sientan simples, rápidos y bien pensados."
-  />
+  <div class="about__intro">
+    <TitleSection id="about-title" title="About me" />
+  </div>
 
   <div class="about__content">
-    <p>
-      Soy desarrollador frontend con foco en experiencias digitales claras: diseño interfaces,
-      traduzco sistemas visuales a código y optimizo cada detalle para que el sitio cargue rápido.
-    </p>
-    <p>
-      Trabajo bien en la intersección entre diseño y desarrollo, cuidando accesibilidad,
-      responsive design y mantenimiento del código.
-    </p>
-    <ul class="about__skills" aria-label="Habilidades">
-      {skills.map((skill) => <li>{skill}</li>)}
-    </ul>
+    <div class="about__copy">
+      <p>
+        Soy desarrollador frontend/web especializado en crear interfaces rápidas, accesibles y
+        responsive con tecnologías modernas basadas en JavaScript y TypeScript.
+      </p>
+      <p>
+        Me enfoco en transformar necesidades de producto en experiencias web claras, cuidando SEO,
+        rendimiento, estructura semántica y mantenibilidad del código.
+      </p>
+    </div>
+
+    <div class="about__stack" aria-label="Tecnologías y habilidades">
+      {stack.map((item) => (
+        <StackCard class="about__stack-card" title={item.title} icon={item.icon} />
+      ))}
+    </div>
   </div>
 </section>
