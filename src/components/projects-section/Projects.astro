@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import projectCover from "../../assets/project-cover.jpeg";
+import bantiaxCover from "../../assets/bantiax.jpeg";
+import puertasMagicCover from "../../assets/puertasmagic.jpeg";
+import winnerCover from "../../assets/winner1.jpeg";
 import Container from "../container/Container.astro";
 import Icon from "../icon/Icon.astro";
 import StackCard from "../stack-card/StackCard.astro";
@@ -28,7 +30,7 @@ const projects = [
       { title: "Next.js", icon: "/icons/nextjs.svg" },
       { title: "Security", icon: "/icons/accessibility.svg" },
     ],
-    image: projectCover,
+    image: winnerCover,
     imageAlt: "Preview de Colegio Academia Winner",
   },
   {
@@ -44,7 +46,7 @@ const projects = [
       { title: "TypeScript", icon: "/icons/typescript.svg" },
       { title: "Astro", icon: "/icons/astro.svg" },
     ],
-    image: projectCover,
+    image: bantiaxCover,
     imageAlt: "Preview de Bantiax Frontend Platform",
   },
   {
@@ -61,25 +63,8 @@ const projects = [
       { title: "CSS", icon: "/icons/css.svg" },
       { title: "SEO", icon: "/icons/seo.svg" },
     ],
-    image: projectCover,
+    image: puertasMagicCover,
     imageAlt: "Preview de Puertas Automáticas Magic",
-  },
-  {
-    title: "Sistema de Seguimiento de Tesis",
-    description:
-      "Proyecto legacy de mejora y optimización frontend para un sistema institucional, con participación en análisis Scrum y refinamiento de entregables.",
-    links: [
-      { label: "Legacy case", href: "#", icon: "arrow" },
-      { label: "Private code", local: "/icons/github.svg", private: true },
-    ],
-    meta: "Legacy system",
-    stack: [
-      { title: "React", icon: "/icons/react.svg" },
-      { title: "Scrum", icon: "/icons/scrum.svg" },
-      { title: "Performance", icon: "/icons/performance.svg" },
-    ],
-    image: projectCover,
-    imageAlt: "Preview de Sistema de Seguimiento de Tesis",
   },
 ];
 ---
@@ -101,15 +86,22 @@ const projects = [
     {projects.map((project, index) => (
       <li class:list={["project-showcase", index % 2 !== 0 && "project-showcase--reverse"]}>
         <Container class="project-showcase__card" variant="default">
-          <div class="project-showcase__media">
-            <Image
-              class="project-showcase__image"
-              src={project.image}
-              alt={project.imageAlt}
-              widths={[480, 720, 960]}
-              sizes="(max-width: 900px) 100vw, 50vw"
-              loading={index === 0 ? "eager" : "lazy"}
-            />
+          <div class:list={["project-showcase__media", !project.image && "project-showcase__media--cover"]}>
+            {project.image ? (
+              <Image
+                class="project-showcase__image"
+                src={project.image}
+                alt={project.imageAlt}
+                widths={[480, 720, 960]}
+                sizes="(max-width: 900px) 100vw, 50vw"
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            ) : (
+              <div class="project-showcase__cover" aria-label={project.imageAlt}>
+                <span>{project.meta}</span>
+                <strong>{project.title}</strong>
+              </div>
+            )}
           </div>
 
           <div class="project-showcase__card-body">
