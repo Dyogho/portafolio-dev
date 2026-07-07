@@ -3,68 +3,94 @@ import { Image } from "astro:assets";
 import projectCover from "../../assets/project-cover.jpeg";
 import Container from "../container/Container.astro";
 import Icon from "../icon/Icon.astro";
+import StackCard from "../stack-card/StackCard.astro";
 import TitleSection from "../title-section/TitleSection.astro";
 import "./Projects.css";
 
 const socialLinks = [
-  { label: "Linkedln", href: "#", local: "/icons/linkedln.svg"},
+  { label: "LinkedIn", href: "#", local: "/icons/linkedln.svg" },
   { label: "YouTube", href: "#", local: "/icons/youtube.svg" },
   { label: "GitHub", href: "#", local: "/icons/github.svg" },
 ];
 
 const projects = [
   {
-    title: "SaaS Landing Page",
+    title: "Colegio Academia Winner",
     description:
-      "Página comercial enfocada en conversión, velocidad de carga y una narrativa clara del producto.",
-    href: "#",
+      "Landing y plataforma institucional desarrollada para centralizar información y apoyar la digitalización de procesos internos. Proyecto privado con presencia pública disponible.",
     links: [
-      { label: "YouTube", href: "#", local: "/icons/youtube.svg" },
-      { label: "GitHub", href: "#", local: "/icons/github.svg" },
+      { label: "Live site", href: "#", icon: "arrow" },
+      { label: "Private code", local: "/icons/github.svg", private: true },
     ],
-    meta: "Web design",
-    tags: ["Astro", "CSS", "SEO"],
+    meta: "Institutional platform",
+    stack: [
+      { title: "React", icon: "/icons/react.svg" },
+      { title: "Next.js", icon: "/icons/nextjs.svg" },
+      { title: "Security", icon: "/icons/accessibility.svg" },
+    ],
     image: projectCover,
-    imageAlt: "Preview de SaaS Landing Page",
+    imageAlt: "Preview de Colegio Academia Winner",
   },
   {
-    title: "Design System",
+    title: "Bantiax Frontend Platform",
     description:
-      "Biblioteca de componentes reutilizables con documentación visual y criterios de accesibilidad.",
-    href: "#",
+      "Desarrollo de componentes frontend con React, TypeScript y Astro, priorizando responsive design, estructura SEO y consistencia visual.",
     links: [
-      { label: "YouTube", href: "#", local: "/icons/youtube.svg" },
-      { label: "GitHub", href: "#", local: "/icons/github.svg" },
+      { label: "Private code", local: "/icons/github.svg", private: true },
     ],
-    meta: "UI engineering",
-    tags: ["Storybook", "Tokens", "A11y"],
+    meta: "Frontend engineering",
+    stack: [
+      { title: "React", icon: "/icons/react.svg" },
+      { title: "TypeScript", icon: "/icons/typescript.svg" },
+      { title: "Astro", icon: "/icons/astro.svg" },
+    ],
     image: projectCover,
-    imageAlt: "Preview de Design System",
+    imageAlt: "Preview de Bantiax Frontend Platform",
   },
   {
-    title: "Portfolio v1",
+    title: "Puertas Automáticas Magic",
     description:
-      "Experiencia personal minimalista, responsive y optimizada para presentar proyectos técnicos.",
-    href: "#",
+      "Landing comercial desarrollada en Astro puro, enfocada en SEO on-page, rendimiento y experiencia responsive para una empresa de automatización.",
     links: [
-      { label: "YouTube", href: "#", local: "/icons/youtube.svg" },
-      { label: "GitHub", href: "#", local: "/icons/github.svg" },
+      { label: "Live site", href: "#", icon: "arrow" },
+      { label: "Private code", local: "/icons/github.svg", private: true },
     ],
-    meta: "Personal brand",
-    tags: ["Astro", "TypeScript", "CSS"],
+    meta: "Commercial landing",
+    stack: [
+      { title: "Astro", icon: "/icons/astro.svg" },
+      { title: "CSS", icon: "/icons/css.svg" },
+      { title: "SEO", icon: "/icons/seo.svg" },
+    ],
     image: projectCover,
-    imageAlt: "Preview de Portfolio v1",
+    imageAlt: "Preview de Puertas Automáticas Magic",
+  },
+  {
+    title: "Sistema de Seguimiento de Tesis",
+    description:
+      "Proyecto legacy de mejora y optimización frontend para un sistema institucional, con participación en análisis Scrum y refinamiento de entregables.",
+    links: [
+      { label: "Legacy case", href: "#", icon: "arrow" },
+      { label: "Private code", local: "/icons/github.svg", private: true },
+    ],
+    meta: "Legacy system",
+    stack: [
+      { title: "React", icon: "/icons/react.svg" },
+      { title: "Scrum", icon: "/icons/scrum.svg" },
+      { title: "Performance", icon: "/icons/performance.svg" },
+    ],
+    image: projectCover,
+    imageAlt: "Preview de Sistema de Seguimiento de Tesis",
   },
 ];
 ---
 
 <section id="projects" class="section page-grid projects" aria-labelledby="projects-title">
   <div class="projects__intro">
-    <TitleSection title="Projects" />
+    <TitleSection id="projects-title" title="Projects" />
     <div class="projects__social-links" aria-label="Social links">
       {socialLinks.map((link) => (
         <a href={link.href}>
-          <Icon name={link.icon} local={link.local} size={18} />
+          <Icon local={link.local} size={18} />
           {link.label}
         </a>
       ))}
@@ -90,9 +116,11 @@ const projects = [
             <p class="project-showcase__meta">{project.meta}</p>
             <h3>{project.title}</h3>
 
-            <ul class="project-showcase__tags" aria-label="Tecnologías">
-              {project.tags.map((tag) => <li>{tag}</li>)}
-            </ul>
+            <div class="project-showcase__stack" aria-label="Tecnologías">
+              {project.stack.map((item) => (
+                <StackCard class="project-showcase__stack-card" title={item.title} icon={item.icon} />
+              ))}
+            </div>
           </div>
         </Container>
 
@@ -102,10 +130,17 @@ const projects = [
 
           <div class="project-showcase__links" aria-label={`Links for ${project.title}`}>
             {project.links.map((link) => (
-              <a href={link.href}>
-                <Icon name={link.icon} local={link.local} size={18} />
-                {link.label}
-              </a>
+              link.private ? (
+                <span class="project-showcase__private-link" aria-label="Private code repository">
+                  <Icon local={link.local} size={18} />
+                  {link.label}
+                </span>
+              ) : (
+                <a href={link.href}>
+                  <Icon name={link.icon} size={18} />
+                  {link.label}
+                </a>
+              )
             ))}
           </div>
         </Container>

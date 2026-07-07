@@ -33,7 +33,8 @@
 }
 
 .projects__social-links a,
-.project-showcase__links a {
+.project-showcase__links a,
+.project-showcase__private-link {
   align-items: center;
   border: 1px solid var(--color-line);
   border-radius: 999px;
@@ -45,6 +46,11 @@
   padding-inline: var(--space-4);
   text-decoration: none;
   transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.project-showcase__private-link {
+  color: var(--color-secondary);
+  cursor: not-allowed;
 }
 
 .projects__social-links a:hover,
@@ -65,7 +71,7 @@
 
 .projects__list {
   display: grid;
-  gap: var(--space-10);
+  gap: var(--space-8);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -79,15 +85,17 @@
 
 .project-showcase__card {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
   grid-column: 1 / 7;
+  padding: var(--space-5);
 }
 
 .project-showcase__details {
   align-content: center;
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
   grid-column: 7 / -1;
+  padding: var(--space-5);
 }
 
 .project-showcase--reverse .project-showcase__card {
@@ -100,7 +108,7 @@
 }
 
 .project-showcase__media {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   background: var(--color-tertiary);
   border-radius: 1rem;
   overflow: hidden;
@@ -135,29 +143,36 @@
   margin: 0;
 }
 
-.project-showcase__tags {
+.project-showcase__stack {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
-.project-showcase__tags li {
+.project-showcase__stack-card {
   border: 1px solid var(--color-line);
   border-radius: 999px;
+  min-height: auto;
+  padding: var(--space-2) var(--space-3);
+}
+
+.project-showcase__stack-card .stack-card__icon {
+  height: var(--space-4);
+  width: var(--space-4);
+}
+
+.project-showcase__stack-card .stack-card__title {
   color: var(--color-secondary);
   font-size: var(--size-font-sm);
-  padding: var(--space-2) var(--space-3);
+  letter-spacing: 0;
 }
 
 .project-showcase__summary {
   color: var(--color-primary);
-  font-size: var(--size-font-lg);
+  font-size: var(--size-font-base);
   line-height: var(--line-height-body);
   margin: 0;
-  max-width: 36rem;
+  max-width: 32rem;
 }
 
 .project-showcase__links {
