@@ -1,45 +1,75 @@
 ---
-import SectionHeading from "../section-heading/SectionHeading.astro";
+import TitleSection from "../title-section/TitleSection.astro";
 import "./Experience.css";
 
 const experiences = [
   {
-    period: "2024 — Actual",
-    role: "Frontend Developer",
-    company: "Freelance",
-    description: "Construcción de sitios rápidos, landing pages y componentes reutilizables para productos digitales.",
+    company: "Colegio Academia Winner",
+    positions: [
+      { period: "May. 2026 — Jul. 2026", role: "Desarrollador Web" },
+      { period: "Set. 2025 — Nov. 2025", role: "Desarrollador Web" },
+    ],
+    highlights: [
+      "Etapa reciente: evolucioné el módulo de concursos académicos, mejorando la organización del código, la mantenibilidad del flujo y la experiencia de uso para la gestión institucional.",
+      "Etapa inicial: desarrollé la primera versión del sistema orientada a centralizar información y apoyar la digitalización de procesos vinculados a concursos.",
+    ],
   },
   {
-    period: "2022 — 2024",
-    role: "UI Developer",
-    company: "Digital Studio",
-    description: "Implementación de interfaces responsive, integración con APIs y colaboración con diseño/producto.",
+    company: "Bantiax",
+    positions: [
+      { period: "Abr. 2026 — Jun. 2026", role: "Desarrollador Frontend" },
+    ],
+    highlights: [
+      "Desarrollé componentes de interfaz reutilizables con React, Angular y TypeScript, colaborando con UI/UX para implementar vistas responsive y pixel-perfect con foco en rendimiento y SEO.",
+    ],
   },
   {
-    period: "2020 — 2022",
-    role: "Web Developer",
-    company: "Early projects",
-    description: "Desarrollo de sitios estáticos, optimización básica de SEO y mantenimiento frontend.",
+    company: "Puertas Automáticas Magic",
+    positions: [
+      { period: "Ene. 2026 — Mar. 2026", role: "Desarrollador Frontend" },
+    ],
+    highlights: [
+      "Diseñé y desarrollé una landing comercial en Astro puro, priorizando SEO on-page, velocidad de carga, estructura semántica y una experiencia responsive consistente.",
+    ],
+  },
+  {
+    company: "Universidad Nacional del Centro del Perú",
+    positions: [
+      { period: "Set. 2023 — May. 2024", role: "Desarrollador Frontend / Analista Scrum" },
+    ],
+    highlights: [
+      "Participé en la mejora frontend de un sistema institucional legacy y apoyé el refinamiento de backlog, definición de historias de usuario, ejecución de sprints y validación continua de requisitos.",
+    ],
   },
 ];
 ---
 
 <section id="experience" class="section experience" aria-labelledby="experience-title">
-  <SectionHeading
-    eyebrow="Timeline"
-    title="Experience"
-    description="Roles recientes y áreas donde he aportado desde la interfaz hasta la entrega final."
-  />
+  <div class="experience__intro">
+    <TitleSection id="experience-title" title="Experience" />
+  </div>
 
   <div class="experience__list">
     {experiences.map((item) => (
       <article class="experience__item">
-        <p class="experience__period">{item.period}</p>
-        <div>
-          <h3 class="experience__role">{item.role}</h3>
-          <p class="experience__company">{item.company}</p>
+        <div class="experience__periods">
+          {item.positions.map((position) => (
+            <p class="experience__period">{position.period}</p>
+          ))}
         </div>
-        <p class="experience__description">{item.description}</p>
+
+        <div class="experience__heading">
+          <h3 class="experience__company">{item.company}</h3>
+          <div class="experience__roles">
+            {item.positions.map((position) => (
+              <p class="experience__role">{position.role}</p>
+            ))}
+          </div>
+        </div>
+
+        <ul class="experience__highlights">
+          {item.highlights.map((highlight) => <li>{highlight}</li>)}
+        </ul>
       </article>
     ))}
   </div>
