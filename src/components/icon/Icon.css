@@ -18,5 +18,16 @@
 }
 
 .icon__image {
+  filter: var(--icon-filter, none);
   object-fit: contain;
+}
+
+@media (prefers-color-scheme: dark) {
+  .icon__image {
+    --icon-filter: invert(1);
+  }
+}
+
+[data-theme="dark"] .icon__image {
+  --icon-filter: invert(1);
 }
