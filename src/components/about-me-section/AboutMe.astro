@@ -9,7 +9,7 @@ const stack = [
   { title: "Next.js", icon: "/icons/nextjs.svg" },
   { title: "Angular", icon: "/icons/angular.svg" },
   { title: "Astro", icon: "/icons/astro.svg" },
-  { title: "Spring Boot", icon: "/icons/springboot.svg" },
+  { title: "Tailwind CSS", icon: "/icons/tailwindcss.svg" },
   { title: "Docker", icon: "/icons/docker.svg" },
   { title: "Git", icon: "/icons/git.svg" },
   { title: "SEO", icon: "/icons/seo.svg" },
@@ -27,16 +27,16 @@ const stack = [
   <div class="about__content">
     <div class="about__copy">
       <p>
-        Soy desarrollador frontend/web especializado en crear interfaces rápidas, accesibles y
-        responsive con tecnologías modernas basadas en JavaScript y TypeScript.
+        I’m a frontend/web developer specialized in building fast, accessible, and responsive
+        interfaces with modern JavaScript and TypeScript technologies.
       </p>
       <p>
-        Me enfoco en transformar necesidades de producto en experiencias web claras, cuidando SEO,
-        rendimiento, estructura semántica y mantenibilidad del código.
+        I focus on turning product needs into clear web experiences, taking care of SEO,
+        performance, semantic structure, and code maintainability.
       </p>
     </div>
 
-    <div class="about__stack" aria-label="Tecnologías y habilidades">
+    <div class="about__stack" aria-label="Technologies and skills">
       {stack.map((item) => (
         <StackCard class="about__stack-card" title={item.title} icon={item.icon} />
       ))}

@@ -4,42 +4,39 @@ import "./Experience.css";
 
 const experiences = [
   {
+    period: "May 2026 — Jul 2026",
     company: "Colegio Academia Winner",
-    positions: [
-      { period: "May. 2026 — Jul. 2026", role: "Desarrollador Web" },
-      { period: "Set. 2025 — Nov. 2025", role: "Desarrollador Web" },
-    ],
-    highlights: [
-      "Refactoricé el módulo de gestión de concursos aplicando criterios de arquitectura y escalabilidad; además mejoré significativamente la UX/UI, optimicé procesos clave, reduje el tiempo operativo y fortalecí la seguridad de los datos.",
-      "Desarrollé el módulo de gestión de concursos para agilizar la inscripción de participantes, el procesamiento de resultados y la publicación final, reduciendo tareas manuales del flujo administrativo.",
-    ],
+    role: "Web Developer",
+    description:
+      "Refactored the contest management module with architecture and scalability criteria; significantly improved UX/UI, optimized key processes, reduced operational time, and strengthened data security.",
   },
   {
+    period: "Apr 2026 — Jun 2026",
     company: "Bantiax",
-    positions: [
-      { period: "Abr. 2026 — Jun. 2026", role: "Desarrollador Frontend" },
-    ],
-    highlights: [
-      "Desarrollé la página en Astro y componentes reutilizables en React con TypeScript, siguiendo los lineamientos y requerimientos definidos en Figma para implementar interfaces pixel-perfect con foco en SEO y responsive design.",
-    ],
+    role: "Frontend Developer",
+    description:
+      "Built the page in Astro and reusable React components with TypeScript, following Figma guidelines and requirements to implement pixel-perfect interfaces focused on SEO and responsive design.",
   },
   {
+    period: "Jan 2026 — Mar 2026",
     company: "Puertas Automáticas Magic",
-    positions: [
-      { period: "Ene. 2026 — Mar. 2026", role: "Desarrollador Frontend" },
-    ],
-    highlights: [
-      "Diseñé y desarrollé una landing comercial en Astro puro, priorizando SEO on-page, velocidad de carga, estructura semántica y una experiencia responsive consistente.",
-    ],
+    role: "Frontend Developer",
+    description:
+      "Designed and developed a commercial landing page in pure Astro, prioritizing on-page SEO, loading speed, semantic structure, and a consistent responsive experience.",
   },
   {
+    period: "Sep 2025 — Nov 2025",
+    company: "Colegio Academia Winner",
+    role: "Web Developer",
+    description:
+      "Developed the contest management module to streamline participant registration, results processing, and final publication, reducing manual tasks in the administrative workflow.",
+  },
+  {
+    period: "Sep 2023 — May 2024",
     company: "Universidad Nacional del Centro del Perú",
-    positions: [
-      { period: "Set. 2023 — May. 2024", role: "Desarrollador Frontend / Analista Scrum" },
-    ],
-    highlights: [
-      "Participé en el desarrollo frontend del módulo de seguimiento de tesis de postgrado, creando mockups, codificando páginas e integrando servicios backend; además apoyé el refinamiento de backlog, historias de usuario, sprints y validación de requisitos.",
-    ],
+    role: "Frontend Developer / Scrum Analyst",
+    description:
+      "Contributed to the frontend development of the postgraduate thesis tracking module by creating mockups, coding pages, and integrating backend services; also supported backlog refinement, user stories, sprints, and requirements validation.",
   },
 ];
 ---
@@ -52,24 +49,14 @@ const experiences = [
   <div class="experience__list">
     {experiences.map((item) => (
       <article class="experience__item">
-        <div class="experience__periods">
-          {item.positions.map((position) => (
-            <p class="experience__period">{position.period}</p>
-          ))}
-        </div>
+        <p class="experience__period">{item.period}</p>
 
         <div class="experience__heading">
           <h3 class="experience__company">{item.company}</h3>
-          <div class="experience__roles">
-            {item.positions.map((position) => (
-              <p class="experience__role">{position.role}</p>
-            ))}
-          </div>
+          <p class="experience__role">{item.role}</p>
         </div>
 
-        <ul class="experience__highlights">
-          {item.highlights.map((highlight) => <li>{highlight}</li>)}
-        </ul>
+        <p class="experience__description">{item.description}</p>
       </article>
     ))}
   </div>

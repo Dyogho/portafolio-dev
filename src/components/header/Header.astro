@@ -9,11 +9,11 @@ const navItems = [
 ---
 
 <header class="site-header">
-  <a class="site-header__logo" href="/" aria-label="Inicio">
+  <a class="site-header__logo" href="/" aria-label="Home">
     <span class="site-header__logo-mark" aria-hidden="true"></span>
   </a>
 
-  <nav class="site-header__nav" aria-label="Principal">
+  <nav class="site-header__nav" aria-label="Primary">
     {navItems.map(({ href, label }) => (
       <a class="site-header__nav-link" href={href}>{label}</a>
     ))}

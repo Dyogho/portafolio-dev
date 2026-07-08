@@ -19,7 +19,7 @@ const projects = [
   {
     title: "Colegio Academia Winner",
     description:
-      "Landing y plataforma institucional desarrollada para centralizar información y apoyar la digitalización de procesos internos. Proyecto privado con presencia pública disponible.",
+      "Institutional landing page and platform built to centralize information and support the digitalization of internal processes. Private project with a public-facing presence available.",
     links: [
       { label: "Live site", href: "#", icon: "arrow" },
       { label: "Private code", local: "/icons/github.svg", private: true },
@@ -31,12 +31,12 @@ const projects = [
       { title: "Security", icon: "/icons/accessibility.svg" },
     ],
     image: winnerCover,
-    imageAlt: "Preview de Colegio Academia Winner",
+    imageAlt: "Colegio Academia Winner preview",
   },
   {
     title: "Bantiax Frontend Platform",
     description:
-      "Desarrollo de componentes frontend con React, TypeScript y Astro, priorizando responsive design, estructura SEO y consistencia visual.",
+      "Frontend component development with React, TypeScript, and Astro, prioritizing responsive design, SEO structure, and visual consistency.",
     links: [
       { label: "Private code", local: "/icons/github.svg", private: true },
     ],
@@ -47,12 +47,12 @@ const projects = [
       { title: "Astro", icon: "/icons/astro.svg" },
     ],
     image: bantiaxCover,
-    imageAlt: "Preview de Bantiax Frontend Platform",
+    imageAlt: "Bantiax Frontend Platform preview",
   },
   {
     title: "Puertas Automáticas Magic",
     description:
-      "Landing comercial desarrollada en Astro puro, enfocada en SEO on-page, rendimiento y experiencia responsive para una empresa de automatización.",
+      "Commercial landing page built in pure Astro, focused on on-page SEO, performance, and responsive experience for an automation company.",
     links: [
       { label: "Live site", href: "#", icon: "arrow" },
       { label: "Private code", local: "/icons/github.svg", private: true },
@@ -64,7 +64,7 @@ const projects = [
       { title: "SEO", icon: "/icons/seo.svg" },
     ],
     image: puertasMagicCover,
-    imageAlt: "Preview de Puertas Automáticas Magic",
+    imageAlt: "Puertas Automáticas Magic preview",
   },
 ];
 ---
@@ -108,7 +108,7 @@ const projects = [
             <p class="project-showcase__meta">{project.meta}</p>
             <h3>{project.title}</h3>
 
-            <div class="project-showcase__stack" aria-label="Tecnologías">
+            <div class="project-showcase__stack" aria-label="Technologies">
               {project.stack.map((item) => (
                 <StackCard class="project-showcase__stack-card" title={item.title} icon={item.icon} />
               ))}
