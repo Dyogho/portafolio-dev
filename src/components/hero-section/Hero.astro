@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import portrait from "../../assets/portrait.jpeg";
 import "./Hero.css";
 
 const sidebarItems = ["Frontend Developer", "2026"];
@@ -36,7 +38,16 @@ const metrics = [
     </div>
 
     <figure class="hero__media" aria-label="Portrait of Dego">
-      <img class="hero__image" src="/image.jpeg" alt="Dego" />
+      <Image
+        class="hero__image"
+        src={portrait}
+        alt="Dego"
+        widths={[480, 720, 960]}
+        sizes="(max-width: 1024px) 0px, 45vw"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
     </figure>
   </div>
 </section>
