@@ -8,29 +8,34 @@ type Props = {
   description?: string;
 };
 
-const {
-  title = "Dev Portfolio",
-  description = "Frontend developer portfolio focused on fast, accessible, and responsive web experiences.",
-} = Astro.props;
+const siteName = "Luis Dyogho Cipriano Silva";
+const defaultTitle = `${siteName} | Frontend Developer`;
+const defaultDescription =
+  "Frontend/Web Developer specialized in React, TypeScript, Astro, SEO, accessibility, and high-performance responsive web experiences.";
+
+const { title = defaultTitle, description = defaultDescription } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<slot />
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/logo/logo.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="author" content={siteName} />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
-
