@@ -39,7 +39,7 @@ const isHidden = label ? undefined : "true";
   {svg ? (
     <span class="icon__svg" set:html={svg} />
   ) : source ? (
-    <img class="icon__image" src={source} alt="" loading="lazy" decoding="async" />
+    <img class="icon__image" src={source} alt="" decoding="async" />
   ) : (
     <svg class="icon__svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       {name === "github" ? (

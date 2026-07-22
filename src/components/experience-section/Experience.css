@@ -60,6 +60,7 @@
   grid-column: 6 / -1;
   line-height: var(--line-height-body);
   margin: 0;
+  text-align: justify;
 }
 
 @media (max-width: 900px) {

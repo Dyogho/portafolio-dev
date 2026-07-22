@@ -25,6 +25,7 @@
   font-size: var(--size-font-lg);
   line-height: var(--line-height-body);
   margin: 0;
+  text-align: justify;
 }
 
 .about__stack {
