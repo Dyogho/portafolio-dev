@@ -1,53 +1,23 @@
 ---
+import { translations, type Locale } from "../../i18n/translations";
 import TitleSection from "../title-section/TitleSection.astro";
 import "./Experience.css";
 
-const experiences = [
-  {
-    period: "May 2026 — Jul 2026",
-    company: "Colegio Academia Winner",
-    role: "Web Developer",
-    description:
-      "Refactored the contest management module with architecture and scalability criteria; significantly improved UX/UI, optimized key processes, reduced operational time, and strengthened data security.",
-  },
-  {
-    period: "Apr 2026 — Jun 2026",
-    company: "Bantiax",
-    role: "Frontend Developer",
-    description:
-      "Built the page in Astro and reusable React components with TypeScript, following Figma guidelines and requirements to implement pixel-perfect interfaces focused on SEO and responsive design.",
-  },
-  {
-    period: "Jan 2026 — Mar 2026",
-    company: "Puertas Automáticas Magic",
-    role: "Frontend Developer",
-    description:
-      "Designed and developed a commercial landing page in pure Astro, prioritizing on-page SEO, loading speed, semantic structure, and a consistent responsive experience.",
-  },
-  {
-    period: "Sep 2025 — Nov 2025",
-    company: "Colegio Academia Winner",
-    role: "Web Developer",
-    description:
-      "Developed the contest management module to streamline participant registration, results processing, and final publication, reducing manual tasks in the administrative workflow.",
-  },
-  {
-    period: "Sep 2023 — May 2024",
-    company: "Universidad Nacional del Centro del Perú",
-    role: "Frontend Developer / Scrum Analyst",
-    description:
-      "Contributed to the frontend development of the postgraduate thesis tracking module by creating mockups, coding pages, and integrating backend services; also supported backlog refinement, user stories, sprints, and requirements validation.",
-  },
-];
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = "es" } = Astro.props;
+const copy = translations[lang].experience;
 ---
 
 <section id="experience" class="section experience" aria-labelledby="experience-title">
   <div class="experience__intro">
-    <TitleSection id="experience-title" title="Experience" />
+    <TitleSection id="experience-title" title={copy.title} />
   </div>
 
   <div class="experience__list">
-    {experiences.map((item) => (
+    {copy.items.map((item) => (
       <article class="experience__item">
         <p class="experience__period">{item.period}</p>
 

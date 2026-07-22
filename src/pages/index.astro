@@ -3,12 +3,16 @@ import AboutMe from "../components/about-me-section/AboutMe.astro";
 import Experience from "../components/experience-section/Experience.astro";
 import Hero from "../components/hero-section/Hero.astro";
 import Projects from "../components/projects-section/Projects.astro";
+import { translations } from "../i18n/translations";
 import Layout from "../layouts/Layout.astro";
+
+const lang = "es";
+const copy = translations[lang];
 ---
 
-<Layout>
-	<Hero />
-	<Projects />
-	<Experience />
-	<AboutMe />
+<Layout lang={lang} title={copy.meta.title} description={copy.meta.description}>
+  <Hero lang={lang} />
+  <Projects lang={lang} />
+  <Experience lang={lang} />
+  <AboutMe lang={lang} />
 </Layout>

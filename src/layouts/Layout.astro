@@ -1,23 +1,23 @@
 ---
-import Footer from "../components/footer/Footer.astro";
 import Header from "../components/header/Header.astro";
+import Footer from "../components/footer/Footer.astro";
+import { translations, type Locale } from "../i18n/translations";
 import "../styles/global.css";
 
 type Props = {
+  lang?: Locale;
   title?: string;
   description?: string;
 };
 
 const siteName = "Luis Dyogho Cipriano Silva";
-const defaultTitle = `${siteName} | Frontend Developer`;
-const defaultDescription =
-  "Frontend/Web Developer specialized in React, TypeScript, Angular, Astro, SEO, accessibility, and high-performance responsive web experiences.";
-
-const { title = defaultTitle, description = defaultDescription } = Astro.props;
+const { lang = "es" } = Astro.props;
+const copy = translations[lang];
+const { title = copy.meta.title, description = copy.meta.description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -32,10 +32,10 @@ const { title = defaultTitle, description = defaultDescription } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <Header />
+    <Header lang={lang} />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>

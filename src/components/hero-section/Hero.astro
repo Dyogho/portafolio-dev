@@ -1,27 +1,29 @@
 ---
 import { Image } from "astro:assets";
 import portrait from "../../assets/portrait.jpeg";
+import { translations, type Locale } from "../../i18n/translations";
 import "./Hero.css";
 
-const sidebarItems = ["Frontend Developer", "2026"];
+interface Props {
+  lang?: Locale;
+}
 
-const metrics = [
-  { value: "2+", label: "Years of experience" },
-  { value: "4", label: "Projects" },
-];
+const { lang = "es" } = Astro.props;
+const copy = translations[lang].hero;
+const [role, year] = copy.sidebarItems;
 ---
 
 <section id="hero" class="hero" aria-labelledby="hero-title">
   <div class="hero__wrapper">
     <aside class="hero__sidebar" aria-hidden="true">
-      <span>{sidebarItems[0]}</span>
+      <span>{role}</span>
       <span class="hero__sidebar-line"></span>
-      <span>{sidebarItems[1]}</span>
+      <span>{year}</span>
     </aside>
 
     <div class="hero__content">
-      <dl class="hero__metrics" aria-label="Portfolio metrics">
-        {metrics.map(({ value, label }) => (
+      <dl class="hero__metrics" aria-label={copy.metricsLabel}>
+        {copy.metrics.map(({ value, label }) => (
           <div class="hero__metric">
             <dt class="hero__number">{value}</dt>
             <dd class="hero__label">{label}</dd>
@@ -30,18 +32,18 @@ const metrics = [
       </dl>
 
       <div class="hero__body">
-        <h1 id="hero-title" class="hero__title">Hello</h1>
-        <p class="hero__subtitle">— Exceptional performance for limitless ideas</p>
+        <h1 id="hero-title" class="hero__title">{copy.title}</h1>
+        <p class="hero__subtitle">{copy.subtitle}</p>
       </div>
 
-      <a class="hero__scroll" href="#projects">Scroll down ↓</a>
+      <a class="hero__scroll" href="#projects">{copy.scroll}</a>
     </div>
 
-    <figure class="hero__media" aria-label="Portrait of Dego">
+    <figure class="hero__media" aria-label={copy.portraitLabel}>
       <Image
         class="hero__image"
         src={portrait}
-        alt="Dego"
+        alt={copy.portraitAlt}
         widths={[480, 720, 960]}
         sizes="(max-width: 1024px) 0px, 45vw"
         loading="eager"

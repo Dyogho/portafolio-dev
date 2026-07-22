@@ -3,78 +3,38 @@ import { Image } from "astro:assets";
 import bantiaxCover from "../../assets/bantiax.jpeg";
 import puertasMagicCover from "../../assets/puertasmagic.jpeg";
 import winnerCover from "../../assets/winner1.jpeg";
+import { translations, type Locale } from "../../i18n/translations";
 import Container from "../container/Container.astro";
 import Icon from "../icon/Icon.astro";
 import StackCard from "../stack-card/StackCard.astro";
 import TitleSection from "../title-section/TitleSection.astro";
 import "./Projects.css";
 
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = "es" } = Astro.props;
+const copy = translations[lang].projects;
+
 const socialLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/luis14cipriano/", local: "/icons/linkedln.svg" },
   { label: "GitHub", href: "https://github.com/Dyogho", local: "/icons/github.svg" },
 ];
 
-const projects = [
-  {
-    title: "Colegio Academia Winner",
-    description:
-      "Institutional landing page and platform built to centralize information and support the digitalization of internal processes. Private project with a public-facing presence available.",
-    links: [
-      { label: "Live site", href: "https://www.colegiosacademiaswinner.edu.pe/", icon: "arrow" },
-      { label: "Private code", local: "/icons/github.svg", private: true },
-    ],
-    meta: "Institutional platform",
-    stack: [
-      { title: "React", icon: "/icons/react.svg" },
-      { title: "Next.js", icon: "/icons/nextjs.svg" },
-      { title: "Security", icon: "/icons/accessibility.svg" },
-    ],
-    image: winnerCover,
-    imageAlt: "Colegio Academia Winner preview",
-  },
-  {
-    title: "Bantiax Frontend Platform",
-    description:
-      "Frontend component development with React, TypeScript, and Astro, prioritizing responsive design, SEO structure, and visual consistency.",
-    links: [
-      { label: "Live site", href: "https://bantiax.com/", icon: "arrow" },
-      { label: "Private code", local: "/icons/github.svg", private: true },
-    ],
-    meta: "Frontend engineering",
-    stack: [
-      { title: "React", icon: "/icons/react.svg" },
-      { title: "TypeScript", icon: "/icons/typescript.svg" },
-      { title: "Astro", icon: "/icons/astro.svg" },
-    ],
-    image: bantiaxCover,
-    imageAlt: "Bantiax Frontend Platform preview",
-  },
-  {
-    title: "Puertas Automáticas Magic",
-    description:
-      "Commercial landing page built in pure Astro, focused on on-page SEO, performance, and responsive experience for an automation company.",
-    links: [
-      { label: "Live site", href: "https://puertasmagic.com/", icon: "arrow" },
-      { label: "Private code", local: "/icons/github.svg", private: true },
-    ],
-    meta: "Commercial landing",
-    stack: [
-      { title: "Astro", icon: "/icons/astro.svg" },
-      { title: "CSS", icon: "/icons/css.svg" },
-      { title: "SEO", icon: "/icons/seo.svg" },
-    ],
-    image: puertasMagicCover,
-    imageAlt: "Puertas Automáticas Magic preview",
-  },
-];
+const projectImages = [winnerCover, bantiaxCover, puertasMagicCover];
+const projects = copy.items.map((project, index) => ({
+  ...project,
+  image: projectImages[index],
+}));
 ---
 
 <section id="projects" class="section page-grid projects" aria-labelledby="projects-title">
   <div class="projects__intro">
-    <TitleSection id="projects-title" title="Projects" />
-    <div class="projects__social-links" aria-label="Social links">
+    <TitleSection id="projects-title" title={copy.title} />
+    <div class="projects__social-links" aria-label={copy.socialLinksLabel}>
       {socialLinks.map((link) => (
-        <a href={link.href}>
+        <a href={link.href} target="_blank" rel="noopener noreferrer">
           <Icon local={link.local} size={18} />
           {link.label}
         </a>
@@ -82,33 +42,26 @@ const projects = [
     </div>
   </div>
 
-  <ol class="projects__list" aria-label="Selected projects">
+  <ol class="projects__list" aria-label={copy.listLabel}>
     {projects.map((project, index) => (
       <li class:list={["project-showcase", index % 2 !== 0 && "project-showcase--reverse"]}>
         <Container class="project-showcase__card" variant="default">
-          <div class:list={["project-showcase__media", !project.image && "project-showcase__media--cover"]}>
-            {project.image ? (
-              <Image
-                class="project-showcase__image"
-                src={project.image}
-                alt={project.imageAlt}
-                widths={[480, 720, 960]}
-                sizes="(max-width: 900px) 100vw, 50vw"
-                loading={index === 0 ? "eager" : "lazy"}
-              />
-            ) : (
-              <div class="project-showcase__cover" aria-label={project.imageAlt}>
-                <span>{project.meta}</span>
-                <strong>{project.title}</strong>
-              </div>
-            )}
+          <div class="project-showcase__media">
+            <Image
+              class="project-showcase__image"
+              src={project.image}
+              alt={project.imageAlt}
+              widths={[480, 720, 960]}
+              sizes="(max-width: 900px) 100vw, 50vw"
+              loading="lazy"
+            />
           </div>
 
           <div class="project-showcase__card-body">
             <p class="project-showcase__meta">{project.meta}</p>
             <h3>{project.title}</h3>
 
-            <div class="project-showcase__stack" aria-label="Technologies">
+            <div class="project-showcase__stack" aria-label={copy.technologiesLabel}>
               {project.stack.map((item) => (
                 <StackCard class="project-showcase__stack-card" title={item.title} icon={item.icon} />
               ))}
@@ -120,15 +73,15 @@ const projects = [
           <span class="project-showcase__index">{String(index + 1).padStart(2, "0")}</span>
           <p class="project-showcase__summary">{project.description}</p>
 
-          <div class="project-showcase__links" aria-label={`Links for ${project.title}`}>
+          <div class="project-showcase__links" aria-label={`${copy.linksAriaPrefix} ${project.title}`}>
             {project.links.map((link) => (
               link.private ? (
-                <span class="project-showcase__private-link" aria-label="Private code repository">
+                <span class="project-showcase__private-link" aria-label={copy.privateCodeAria}>
                   <Icon local={link.local} size={18} />
                   {link.label}
                 </span>
               ) : (
-                <a href={link.href}>
+                <a href={link.href} target="_blank" rel="noopener noreferrer">
                   <Icon name={link.icon} size={18} />
                   {link.label}
                 </a>

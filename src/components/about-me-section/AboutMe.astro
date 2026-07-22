@@ -1,7 +1,15 @@
 ---
+import { translations, type Locale } from "../../i18n/translations";
 import StackCard from "../stack-card/StackCard.astro";
 import TitleSection from "../title-section/TitleSection.astro";
 import "./AboutMe.css";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = "es" } = Astro.props;
+const copy = translations[lang].about;
 
 const stack = [
   { title: "TypeScript", icon: "/icons/typescript.svg" },
@@ -21,22 +29,15 @@ const stack = [
 
 <section id="about" class="section about" aria-labelledby="about-title">
   <div class="about__intro">
-    <TitleSection id="about-title" title="About me" />
+    <TitleSection id="about-title" title={copy.title} />
   </div>
 
   <div class="about__content">
     <div class="about__copy">
-      <p>
-        I’m a frontend/web developer specialized in building fast, accessible, and responsive
-        interfaces with modern JavaScript and TypeScript technologies.
-      </p>
-      <p>
-        I focus on turning product needs into clear web experiences, taking care of SEO,
-        performance, semantic structure, and code maintainability.
-      </p>
+      {copy.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
     </div>
 
-    <div class="about__stack" aria-label="Technologies and skills">
+    <div class="about__stack" aria-label={copy.stackLabel}>
       {stack.map((item) => (
         <StackCard class="about__stack-card" title={item.title} icon={item.icon} />
       ))}
